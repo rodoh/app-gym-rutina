@@ -126,6 +126,8 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=tu_anon_key
 NEXT_PUBLIC_TRAINING_OWNER_ID=rodri
 ```
 
+El build usa pnpm y define `PNPM_FLAGS=--shamefully-hoist` en `netlify.toml` para compatibilidad con Next.js.
+
 Guia completa: `DEPLOY_NETLIFY.md`.
 
 ## Notas tecnicas

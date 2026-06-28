@@ -4,5 +4,6 @@
 
 [build.environment]
   NODE_VERSION = "22"
+  PNPM_FLAGS = "--shamefully-hoist"
   NETLIFY_NEXT_SKEW_PROTECTION = "true"
   NEXT_PUBLIC_TRAINING_OWNER_ID = "rodri"

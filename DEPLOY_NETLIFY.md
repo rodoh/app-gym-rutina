@@ -37,6 +37,7 @@ La anon key de Supabase es una clave publica de cliente, pero debe estar configu
 Build command: pnpm build
 Publish directory: .next
 Node version: 22
+PNPM_FLAGS: --shamefully-hoist
 ```
 
 6. Cargar las variables de entorno anteriores.
@@ -75,6 +76,16 @@ netlify deploy --prod
 2. Entrar a la app.
 3. Crear una sesion de entrenamiento de prueba.
 4. Confirmar en Supabase que `public.training_state.sessions` aumenta.
+
+## Si Netlify falla instalando dependencias
+
+Este repo usa `pnpm-lock.yaml`, por lo que Netlify instala dependencias con `pnpm install`. La configuracion incluye:
+
+```toml
+PNPM_FLAGS = "--shamefully-hoist"
+```
+
+Ese flag evita problemas de resolucion/importacion con Next.js en Netlify. Si el deploy sigue fallando en la etapa `Installing dependencies`, revisar que Netlify este usando Node 22 y que el log muestre `pnpm`.
 
 ## Nota sobre Supabase
 
