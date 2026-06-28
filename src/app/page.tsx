@@ -4,8 +4,8 @@ import { useMemo, useState } from "react";
 import { AppShell } from "@/components/AppShell";
 import { ButtonLink } from "@/components/Buttons";
 import { EmptyState, Panel, StatCard } from "@/components/Cards";
+import { LoadChart } from "@/components/Charts";
 import { DayPicker } from "@/components/DayPicker";
-import { routineImportNotes } from "@/lib/importRoutine";
 import {
   completedSets,
   currentSpanishDay,
@@ -26,6 +26,30 @@ export default function HomePage() {
     () => sessions.slice().sort((a, b) => b.completedAt.localeCompare(a.completedAt))[0],
     [sessions]
   );
+  const mondayFirstExercise = program.workoutDays.find((day) => day.dayOfWeek === "lunes")?.exercises[0];
+  const mondayFirstExerciseLoads = useMemo(() => {
+    const monday = program.workoutDays.find((day) => day.dayOfWeek === "lunes");
+    const firstExercise = monday?.exercises[0];
+    if (!monday || !firstExercise) return [];
+
+    return sessions
+      .filter((session) => session.workoutDayId === monday.id)
+      .sort((a, b) => a.completedAt.localeCompare(b.completedAt))
+      .map((session) => {
+        const exercise = session.exercises.find((item) => item.exerciseId === firstExercise.id);
+        const lastCompletedSet = exercise?.sets
+          .filter((set) => set.completed && typeof set.weightKg === "number")
+          .sort((a, b) => b.setNumber - a.setNumber)[0];
+
+        if (!lastCompletedSet || typeof lastCompletedSet.weightKg !== "number") return null;
+
+        return {
+          date: formatDate(session.completedAt),
+          weightKg: lastCompletedSet.weightKg
+        };
+      })
+      .filter((item): item is { date: string; weightKg: number } => Boolean(item));
+  }, [program.workoutDays, sessions]);
 
   return (
     <AppShell>
@@ -118,12 +142,16 @@ export default function HomePage() {
           </Panel>
 
           <Panel>
-            <h2 className="text-lg font-black text-white">Importacion inicial</h2>
-            <ul className="mt-3 space-y-2 text-sm leading-6 text-zinc-400">
-              {routineImportNotes.map((note) => (
-                <li key={note}>{note}</li>
-              ))}
-            </ul>
+            <p className="text-xs font-bold uppercase tracking-wide text-zinc-500">Primer ejercicio del lunes</p>
+            <h2 className="mt-1 text-lg font-black text-white">
+              {mondayFirstExercise?.name ?? "Sin ejercicio definido"}
+            </h2>
+            <p className="mt-2 text-sm leading-6 text-zinc-400">
+              Evolucion de carga usando solo la ultima serie completada de cada sesion de lunes.
+            </p>
+            <div className="mt-4">
+              <LoadChart data={mondayFirstExerciseLoads} />
+            </div>
           </Panel>
         </aside>
       </div>
