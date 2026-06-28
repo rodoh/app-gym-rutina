@@ -21,7 +21,7 @@ El JSON no define rangos de carga por ejercicio, por eso la app no inventa carga
 - Detalle de entrenamiento con calentamiento, series de aproximacion y tarjetas de ejercicios.
 - Modo entrenamiento con registro por serie: kg, reps, RPE, RIR, completado y notas.
 - Referencia automatica de la ultima carga usada antes de una nueva sesion.
-- Registro de aerobicos/cardio post-entrenamiento asociado a la sesion: tiempo, velocidad, pulsaciones promedio, intensidad, distancia, calorias y notas.
+- Registro de cardio post-entrenamiento asociado a la sesion.
 - Resumen final con series, volumen, duracion, cardio, comparacion contra sesion anterior y sensacion general.
 - Historial general con filtros por dia, ejercicio y fechas.
 - Evolucion de cargas por ejercicio.

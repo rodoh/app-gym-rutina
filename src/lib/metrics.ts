@@ -129,16 +129,6 @@ export const validateSession = (session: WorkoutSession) => {
   if (session.cardio?.minutes !== "" && session.cardio?.minutes !== undefined && session.cardio.minutes < 0) {
     return "Los minutos de cardio no pueden ser negativos.";
   }
-  if (session.cardio?.speedKmh !== "" && session.cardio?.speedKmh !== undefined && session.cardio.speedKmh < 0) {
-    return "La velocidad de cardio no puede ser negativa.";
-  }
-  if (
-    session.cardio?.averageHeartRate !== "" &&
-    session.cardio?.averageHeartRate !== undefined &&
-    session.cardio.averageHeartRate < 0
-  ) {
-    return "Las pulsaciones promedio no pueden ser negativas.";
-  }
 
   return null;
 };

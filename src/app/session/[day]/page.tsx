@@ -27,11 +27,9 @@ const newId = () =>
     : `${Date.now()}-${Math.random().toString(16).slice(2)}`;
 
 const defaultCardio: CardioLog = {
-  type: "cinta",
+  type: "bicicleta",
   minutes: "",
   intensity: "",
-  speedKmh: "",
-  averageHeartRate: "",
   distanceKm: "",
   calories: "",
   notes: ""
@@ -366,9 +364,6 @@ function ReviewPanel({
     <div className="space-y-4">
       <Panel>
         <h3 className="text-xl font-black text-white">Cardio post-entrenamiento</h3>
-        <p className="mt-2 text-sm text-zinc-400">
-          Registro de aerobicos para caminata en cinta al final del entrenamiento.
-        </p>
         <div className="mt-4 grid gap-3 sm:grid-cols-3">
           <label className="block">
             <span className="mb-1 block text-xs font-bold uppercase tracking-wide text-zinc-500">Tipo</span>
@@ -386,22 +381,10 @@ function ReviewPanel({
             </select>
           </label>
           <NumberField
-            label="Tiempo"
+            label="Duracion"
             suffix="min"
             value={cardio.minutes}
             onChange={(value) => setCardio({ ...cardio, minutes: value })}
-          />
-          <NumberField
-            label="Velocidad"
-            suffix="km/h"
-            value={cardio.speedKmh ?? ""}
-            onChange={(value) => setCardio({ ...cardio, speedKmh: value })}
-          />
-          <NumberField
-            label="Pulsaciones prom."
-            suffix="ppm"
-            value={cardio.averageHeartRate ?? ""}
-            onChange={(value) => setCardio({ ...cardio, averageHeartRate: value })}
           />
           <NumberField
             label="Intensidad"
