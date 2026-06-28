@@ -85,12 +85,11 @@ Este repo usa `pnpm-lock.yaml`, por lo que Netlify instala dependencias con `pnp
 PNPM_FLAGS = "--shamefully-hoist"
 ```
 
-Tambien incluye `pnpm-workspace.yaml` con `onlyBuiltDependencies` para permitir los scripts de build que pnpm 11 exige aprobar:
+Tambien incluye la aprobacion en `.npmrc` y `pnpm-workspace.yaml` con `onlyBuiltDependencies` para permitir los scripts de build que pnpm 11 exige aprobar:
 
-```yaml
-onlyBuiltDependencies:
-  - sharp
-  - unrs-resolver
+```ini
+only-built-dependencies[]=sharp
+only-built-dependencies[]=unrs-resolver
 ```
 
 Esto evita el error `ERR_PNPM_IGNORED_BUILDS` durante `Installing dependencies`.
