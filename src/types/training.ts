@@ -115,6 +115,8 @@ export type CardioLog = {
   type: CardioType;
   minutes: number | "";
   intensity: number | "";
+  speedKmh?: number | "";
+  averageHeartRate?: number | "";
   distanceKm?: number | "";
   calories?: number | "";
   notes?: string;

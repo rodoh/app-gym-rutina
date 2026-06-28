@@ -161,6 +161,16 @@ export default function ProgressPage() {
                     <StatCard label="Volumen" value={Math.round(volumeForSession(session))} detail="kg" />
                     <StatCard label="Cardio" value={session.cardio?.minutes || 0} detail="min" />
                   </div>
+                  {session.cardio?.minutes ? (
+                    <div className="mt-3 rounded-xl bg-ink/40 p-3 text-sm text-zinc-300">
+                      <p className="font-bold text-white">Aerobicos</p>
+                      <p className="mt-1">
+                        {session.cardio.type} - {session.cardio.minutes} min
+                        {session.cardio.speedKmh ? ` - ${session.cardio.speedKmh} km/h` : ""}
+                        {session.cardio.averageHeartRate ? ` - ${session.cardio.averageHeartRate} ppm prom.` : ""}
+                      </p>
+                    </div>
+                  ) : null}
                   <div className="mt-3 space-y-2">
                     {session.exercises.map((exercise) => (
                       <div key={exercise.exerciseId} className="rounded-xl bg-ink/40 p-3 text-sm">
