@@ -6,7 +6,7 @@ Esta app esta lista para alojarse en Netlify como proyecto Next.js.
 
 - `netlify.toml`: comando de build, publish directory y variables no sensibles.
 - `.nvmrc`: Node 22.
-- `package.json`: `packageManager` con pnpm y `engines.node`.
+- `package.json`: `packageManager` con npm y `engines.node`.
 - `.gitignore`: excluye `.env.local`, `.next/` y `node_modules/`.
 
 ## Variables de entorno en Netlify
@@ -34,10 +34,9 @@ La anon key de Supabase es una clave publica de cliente, pero debe estar configu
 5. Confirmar:
 
 ```bash
-Build command: pnpm build
+Build command: npm run build
 Publish directory: .next
 Node version: 22
-PNPM_FLAGS: --shamefully-hoist
 ```
 
 6. Cargar las variables de entorno anteriores.
@@ -77,22 +76,15 @@ netlify deploy --prod
 3. Crear una sesion de entrenamiento de prueba.
 4. Confirmar en Supabase que `public.training_state.sessions` aumenta.
 
-## Si Netlify falla instalando dependencias
+## Instalacion de dependencias
 
-Este repo usa `pnpm-lock.yaml`, por lo que Netlify instala dependencias con `pnpm install`. La configuracion incluye:
+Este repo usa npm en Netlify para evitar el bloqueo de pnpm 11 con `ERR_PNPM_IGNORED_BUILDS` en dependencias transitivas como `sharp` y `unrs-resolver`.
 
-```toml
-PNPM_FLAGS = "--shamefully-hoist"
+```json
+"packageManager": "npm@10.9.8"
 ```
 
-Tambien incluye la aprobacion en `.npmrc` y `pnpm-workspace.yaml` con `onlyBuiltDependencies` para permitir los scripts de build que pnpm 11 exige aprobar:
-
-```ini
-only-built-dependencies[]=sharp
-only-built-dependencies[]=unrs-resolver
-```
-
-Esto evita el error `ERR_PNPM_IGNORED_BUILDS` durante `Installing dependencies`.
+No subir `pnpm-lock.yaml`; si Netlify lo encuentra, vuelve a instalar con pnpm.
 
 ## Nota sobre Supabase
 

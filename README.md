@@ -86,15 +86,15 @@ Nota de seguridad: el SQL incluido habilita acceso anonimo solo para `owner_id =
 ## Requisitos
 
 - Node.js 20 o superior.
-- pnpm.
+- npm para deploy en Netlify.
 
 ## Correr el proyecto
 
 Para usar la app normalmente, conviene correrla en modo produccion local:
 
 ```bash
-pnpm build
-pnpm start
+npm run build
+npm run start
 ```
 
 Luego abrir `http://localhost:3000`.
@@ -102,16 +102,16 @@ Luego abrir `http://localhost:3000`.
 El modo desarrollo queda disponible para editar codigo con hot reload:
 
 ```bash
-pnpm install
-pnpm dev
+npm install
+npm run dev
 ```
 
-En algunos navegadores embebidos el servidor de desarrollo puede dejar el indicador de carga activo por el cliente de hot reload. Para entrenar o probar la app como usuario, usar `pnpm build` y `pnpm start`.
+En algunos navegadores embebidos el servidor de desarrollo puede dejar el indicador de carga activo por el cliente de hot reload. Para entrenar o probar la app como usuario, usar `npm run build` y `npm run start`.
 
 ## Build
 
 ```bash
-pnpm build
+npm run build
 ```
 
 ## Deploy en Netlify
@@ -126,7 +126,7 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=tu_anon_key
 NEXT_PUBLIC_TRAINING_OWNER_ID=rodri
 ```
 
-El build usa pnpm y define `PNPM_FLAGS=--shamefully-hoist` en `netlify.toml` para compatibilidad con Next.js.
+El build en Netlify usa npm para evitar el bloqueo de scripts de build de pnpm 11 en dependencias transitivas.
 
 Guia completa: `DEPLOY_NETLIFY.md`.
 
