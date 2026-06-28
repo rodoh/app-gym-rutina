@@ -1,0 +1,126 @@
+{
+  "program": {
+    "name": "Rutina 12 semanas - Fuerza, adaptacion y recomposicion",
+    "owner": "Rodri",
+    "durationWeeks": 12,
+    "goal": "Ganar fuerza, mantener masa muscular y perder grasa gradual",
+    "context": {
+      "medication": "Mounjaro - semana 3 al iniciar el plan",
+      "nutrition": "Plan alimentario hipocalorico con 4 comidas diarias, foco en proteina y tolerancia digestiva",
+      "trainingDays": ["lunes mediodia", "martes mediodia", "viernes noche", "sabado mediodia"],
+      "constraints": [
+        "No entrenar al fallo en ejercicios principales",
+        "Cuidar recuperacion por deficit calorico y uso de Mounjaro",
+        "Ante nauseas o baja tolerancia, priorizar hidratacion y proteina tolerable",
+        "Historial de tendinopatia de biceps distal izquierdo: evitar tirones bruscos y curls pesados al fallo"
+      ]
+    },
+    "globalRules": {
+      "warmup": {
+        "general": [
+          "5-7 minutos de bicicleta, cinta o caminata rapida",
+          "Movilidad de hombros/cadera segun el dia",
+          "1 serie liviana de activacion del grupo muscular principal"
+        ],
+        "rampUpSets": {
+          "description": "Series de aproximacion solo para el primer ejercicio pesado del dia. No cuentan como series efectivas.",
+          "example": [
+            {"load": "barra sola", "reps": 15},
+            {"load": "50% del peso de trabajo", "reps": 8},
+            {"load": "75% del peso de trabajo", "reps": 5},
+            {"load": "90% del peso de trabajo", "reps": 2},
+            {"load": "peso de trabajo", "reps": "series efectivas"}
+          ],
+          "followingExercises": "En los ejercicios siguientes hacer 1 serie liviana antes de empezar, si hace falta."
+        }
+      },
+      "rest": {
+        "mainLifts": "2-3 minutos",
+        "accessoryLifts": "60-90 segundos"
+      },
+      "progression": {
+        "upperBodyIncrementKg": "2 a 2.5 kg",
+        "lowerBodyIncrementKg": "5 kg",
+        "rule": "Subir peso solo cuando se completan todas las series y repeticiones con tecnica solida y RIR objetivo. Si no, repetir peso la semana siguiente."
+      },
+      "intensityBlocks": [
+        {"weeks": "1-4", "rpe": "6-7", "rir": "3-4", "focus": "Adaptacion tecnica, control del movimiento, consistencia"},
+        {"weeks": "5-8", "rpe": "7-8", "rir": "2-3", "focus": "Progresion gradual de cargas"},
+        {"weeks": "9-12", "rpe": "8", "rir": "1-2", "focus": "Consolidar fuerza sin romper tecnica"}
+      ],
+      "cardio": {
+        "postWorkout": "20-30 minutos en Zona 2 despues de cada entrenamiento",
+        "offDays": "Miercoles y domingo: caminata 30-45 minutos",
+        "heartRateReference": "Aprox. 120-135 ppm, ajustar por sensacion"
+      }
+    },
+    "weeklySchedule": [
+      {
+        "day": "lunes",
+        "time": "mediodia",
+        "sessionName": "Tren Superior A - Fuerza",
+        "type": "upper_strength",
+        "exercises": [
+          {"id":"bench_press_barbell","name":"Press de banca con barra","sets":5,"reps":"5","category":"main","rest":"2-3 min","rpeTarget":"segun bloque","notes":"Primer ejercicio pesado. Hacer series de aproximacion."},
+          {"id":"barbell_row","name":"Remo con barra","sets":5,"reps":"5","category":"main","rest":"2-3 min","rpeTarget":"segun bloque","notes":"Agarre apenas mas ancho que hombros. No balancear. Cuidar biceps distal."},
+          {"id":"seated_military_press","name":"Press militar sentado","sets":4,"reps":"6","category":"main_accessory","rest":"2 min","rpeTarget":"segun bloque","notes":"Espalda firme y recorrido controlado."},
+          {"id":"lat_pulldown","name":"Jalon al pecho","sets":4,"reps":"8","category":"accessory","rest":"90 s","notes":"Llevar barra al pecho alto, sin tirones."},
+          {"id":"lateral_raise","name":"Elevaciones laterales","sets":3,"reps":"15","category":"accessory","rest":"60-90 s","notes":"Controlar bajada, sin impulso."},
+          {"id":"hammer_curl","name":"Curl martillo","sets":3,"reps":"10","category":"accessory","rest":"60-90 s","notes":"No llevar al fallo por historial de biceps."},
+          {"id":"rope_triceps_pushdown","name":"Triceps en polea con cuerda","sets":3,"reps":"12","category":"accessory","rest":"60-90 s","notes":"Codos estables."}
+        ]
+      },
+      {
+        "day": "martes",
+        "time": "mediodia",
+        "sessionName": "Tren Inferior A - Fuerza",
+        "type": "lower_strength",
+        "exercises": [
+          {"id":"barbell_squat","name":"Sentadilla con barra","sets":5,"reps":"5","category":"main","rest":"2-3 min","notes":"Primer ejercicio pesado. Hacer series de aproximacion."},
+          {"id":"romanian_deadlift","name":"Peso muerto rumano","sets":4,"reps":"6","category":"main","rest":"2-3 min","notes":"Bisagra de cadera, espalda neutra, bajar controlado."},
+          {"id":"leg_press","name":"Prensa","sets":3,"reps":"10","category":"accessory","rest":"90 s","notes":"Recorrido amplio sin despegar cadera."},
+          {"id":"lying_or_seated_leg_curl","name":"Camilla femoral","sets":3,"reps":"12","category":"accessory","rest":"60-90 s","notes":"Contraccion controlada."},
+          {"id":"calf_raise","name":"Gemelos","sets":4,"reps":"15","category":"accessory","rest":"60-90 s","notes":"Pausa arriba y abajo."},
+          {"id":"plank","name":"Plancha","sets":3,"reps":"45-60 segundos","category":"core","rest":"60 s","notes":"No arquear zona lumbar."},
+          {"id":"dead_bug","name":"Dead Bug","sets":3,"reps":"12","category":"core","rest":"60 s","notes":"Control respiratorio y lumbar pegada."}
+        ]
+      },
+      {
+        "day": "viernes",
+        "time": "noche",
+        "sessionName": "Tren Superior B - Hipertrofia",
+        "type": "upper_hypertrophy",
+        "exercises": [
+          {"id":"incline_db_press","name":"Press inclinado con mancuernas","sets":4,"reps":"10","category":"main_accessory","rest":"90-120 s","notes":"Controlar bajada, no chocar mancuernas."},
+          {"id":"machine_chest_press_horizontal","name":"Press de pecho en maquina horizontal sentado","sets":3,"reps":"10-12","category":"accessory","rest":"90 s","notes":"Maquina donde empujas al frente estando sentado. No es press de hombros."},
+          {"id":"lat_pulldown_hypertrophy","name":"Jalon al pecho","sets":4,"reps":"10","category":"accessory","rest":"90 s","notes":"Sin tirones."},
+          {"id":"t_bar_or_barbell_row","name":"Remo en barra T o remo con barra","sets":3,"reps":"10-12","category":"accessory","rest":"90 s","notes":"Elegir opcion disponible y estable."},
+          {"id":"face_pull","name":"Face Pull","sets":3,"reps":"15","category":"accessory","rest":"60-90 s","notes":"Tirar hacia la cara, codos altos."},
+          {"id":"incline_db_curl","name":"Curl inclinado con mancuernas","sets":3,"reps":"12","category":"accessory","rest":"60-90 s","notes":"Controlado, sin dolor en biceps distal."},
+          {"id":"overhead_rope_triceps_extension","name":"Triceps en polea por encima de la cabeza con cuerda","sets":3,"reps":"12","category":"accessory","rest":"60-90 s","notes":"Estirar sin molestar codos."},
+          {"id":"rear_delt_fly","name":"Pajaros - deltoides posterior","sets":3,"reps":"15","category":"accessory","rest":"60-90 s","notes":"Peso liviano y controlado."}
+        ]
+      },
+      {
+        "day": "sabado",
+        "time": "mediodia",
+        "sessionName": "Tren Inferior B - Hipertrofia",
+        "type": "lower_hypertrophy",
+        "exercises": [
+          {"id":"incline_leg_press","name":"Prensa inclinada","sets":4,"reps":"10","category":"main_accessory","rest":"90-120 s","notes":"Foco en recorrido y control."},
+          {"id":"bulgarian_split_squat","name":"Sentadilla bulgara","sets":3,"reps":"10 por pierna","category":"accessory","rest":"90 s","notes":"Equilibrio antes que carga."},
+          {"id":"romanian_deadlift_hypertrophy","name":"Peso muerto rumano","sets":3,"reps":"8","category":"accessory","rest":"90-120 s","notes":"Si hay fatiga lumbar, reemplazar por camilla femoral 4x10-12."},
+          {"id":"leg_extension","name":"Camilla de cuadriceps","sets":3,"reps":"12","category":"accessory","rest":"60-90 s","notes":"Pausa arriba."},
+          {"id":"lying_or_seated_leg_curl_hypertrophy","name":"Camilla femoral","sets":3,"reps":"12","category":"accessory","rest":"60-90 s","notes":"Control total."},
+          {"id":"calf_raise_hypertrophy","name":"Gemelos","sets":4,"reps":"15","category":"accessory","rest":"60-90 s","notes":"Pausa arriba y abajo."},
+          {"id":"cable_crunch","name":"Crunch en polea","sets":3,"reps":"15","category":"core","rest":"60-90 s","notes":"Flexionar columna, no tirar con brazos."}
+        ]
+      }
+    ],
+    "trackingFields": {
+      "perSet": ["weightKg", "repsCompleted", "rpe", "rir", "notes"],
+      "perSession": ["date", "bodyWeightKg", "energyLevel1to5", "appetite1to5", "nausea0to3", "sleepHours", "cardioMinutes", "generalNotes"],
+      "calculated": ["estimated1RM", "volumeKg", "completedAllSets", "progressionSuggestion"]
+    }
+  }
+}
